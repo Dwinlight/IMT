@@ -1,6 +1,7 @@
 package structure;
 
-public class Tuple {
+
+public class Tuple implements Comparable<Tuple> {
     int priority;
     String element;
 
@@ -24,4 +25,17 @@ public class Tuple {
     public String getElement() {
         return element;
     }
+
+    @Override
+    public int compareTo(Tuple t){
+        if (this.priority > t.getPriority()){
+            return 1;
+        }
+        if (this.priority > t.getPriority()) {
+            return -1;
+        }
+        return 0;
+    }
+
+
 }

@@ -45,7 +45,11 @@ public class PQueueImplNonTriee<T extends Comparable<T>> implements PQueue<T> {
     }
 
     @Override
-    public PQueue<T> fusion() {
-        return null;
+    public PQueue<T> fusion(PQueue<T> q) {
+        PQueue<T> fusionne = this;
+        while(!q.estVide()) {
+            fusionne.ajouter(q.retirer().get());
+        }
+        return fusionne;
     }
 }

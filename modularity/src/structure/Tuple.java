@@ -1,6 +1,5 @@
 package structure;
 
-
 public class Tuple implements Comparable<Tuple> {
     int priority;
     String element;
@@ -31,7 +30,7 @@ public class Tuple implements Comparable<Tuple> {
         if (this.priority > t.getPriority()){
             return 1;
         }
-        if (this.priority > t.getPriority()) {
+        if (this.priority < t.getPriority()) {
             return -1;
         }
         return 0;

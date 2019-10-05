@@ -27,6 +27,7 @@ public class PQueueImplTrieeSimple<T extends Comparable<T>> implements PQueue<T>
             }
             this.elements.add(i, e);
         }
+
     }
 
     @Override
@@ -55,7 +56,7 @@ public class PQueueImplTrieeSimple<T extends Comparable<T>> implements PQueue<T>
 
     public static void main (String[] args){
         PQueueImplTrieeSimple<Tuple> file = new PQueueImplTrieeSimple<Tuple>();
-        Tuple t1 = new Tuple(1,"FIRST");
+        Tuple t1 = new Tuple(1,"first");
         Tuple t2 = new Tuple(2,"SECOND");
         Tuple t3 = new Tuple(3,"THIRD");
         Tuple t4 = new Tuple(6,"FOURTH");

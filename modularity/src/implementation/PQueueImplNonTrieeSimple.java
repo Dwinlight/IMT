@@ -7,33 +7,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class PQueueImplTrieeSimple<T extends Comparable<T>> implements PQueue<T> {
+public class PQueueImplNonTrieeSimple<T extends Comparable<T>> implements PQueue<T> {
 
     private List<T> elements;
 
-    public PQueueImplTrieeSimple() {
+    public PQueueImplNonTrieeSimple() {
         this.elements = new ArrayList<T>();
     }
 
     @Override
     public void ajouter(T e) {
-        if(this.estVide()){
-            this.elements.add(e);
-        }
-        else{
-            int i = 0;
-            while(i<this.elements.size() && e.compareTo(this.elements.get(i)) <= 0 ){
-                i++;
-            }
-            this.elements.add(i, e);
-        }
+        this.elements.add(e);
     }
 
     @Override
     public Optional<T> retirer() {
         if(!this.estVide()){
             T temp = this.elements.get(0);
-            this.elements.remove(0);
+            int flag = 0;
+            for (int i = 0; i < this.elements.size(); i++) {
+                if(this.elements.get(i).compareTo(temp) > 0){
+                    temp = this.elements.get(i);
+                    flag = i;
+                }
+            }
+            temp = this.elements.get(flag);
+            this.elements.remove(flag);
             return Optional.of(temp);
         }
         return Optional.of(null);
@@ -54,7 +53,7 @@ public class PQueueImplTrieeSimple<T extends Comparable<T>> implements PQueue<T>
     }
 
     public static void main (String[] args){
-        PQueueImplTrieeSimple<Tuple> file = new PQueueImplTrieeSimple<Tuple>();
+        PQueueImplNonTrieeSimple<Tuple> file = new PQueueImplNonTrieeSimple<Tuple>();
         Tuple t1 = new Tuple(1,"FIRST");
         Tuple t2 = new Tuple(2,"SECOND");
         Tuple t3 = new Tuple(3,"THIRD");

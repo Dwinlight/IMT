@@ -60,9 +60,5 @@ public class PQueueImplNonTrieeSimple<T extends Comparable<T>> implements PQueue
         return fusionne;
     }
 
-    public static void main (String[] args){
 
-
-
-    }
 }

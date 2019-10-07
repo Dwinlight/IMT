@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58c452fc-1a2a-4440-b868-513ccfee46c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/implementation/TestsImplementations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interface/PQueueExtend.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/implementation/PQueueImplNonTriee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modularity.iml" beforeDir="false" afterPath="$PROJECT_DIR$/modularity.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/modularity/META-INF/modularity.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/modularity/Interface/PQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/modularity/Interface/PQueue.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/modularity/implementation/PQueueImplNonTrieeSimple.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/modularity/implementation/PQueueImplNonTrieeSimple.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/modularity/implementation/PQueueImplTrieeSimple.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/modularity/implementation/PQueueImplTrieeSimple.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/PQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/PQueue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/implementation/PQueueImplNonTrieeSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/PQueueImplNonTrieeSimple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/implementation/PQueueImplTrieeSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/PQueueImplTrieeSimple.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +19,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -130,8 +130,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TestsImplementations" />
-        <item itemvalue="Application.TestsImplementations" />
         <item itemvalue="JUnit.TestsImplementations.testSimpleTriee" />
+        <item itemvalue="Application.TestsImplementations" />
         <item itemvalue="JUnit.TestsImplementations.testSimpleNonTriee" />
         <item itemvalue="Application.PQueueImplTrieeSimple" />
       </list>

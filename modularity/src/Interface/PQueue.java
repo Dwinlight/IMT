@@ -2,7 +2,7 @@ package Interface;
 
 import java.util.Optional;
 
-public interface PQueue<T extends Comparable<T>> {
+public interface PQueue<T> {
 
     public void ajouter(T e);
     public Optional<T> retirer();

@@ -38,27 +38,7 @@ public class PQueueImplNonTrieeSimple<T extends Comparable<T>> implements PQueue
         return this.elements.size() == 0;
     }
 
-    @Override
-    public PQueue<T> fusion(PQueue<T> q) {
 
-        PQueue<T> fusionne = new PQueueImplNonTrieeSimple<>();
-        List<T> temp = new ArrayList<>();
-
-        for(T el: this.elements){
-            fusionne.ajouter(el);
-        }
-
-        while(!q.estVide()){
-            T ele = q.retirer().get();
-            temp.add(ele);
-            fusionne.ajouter(ele);
-        }
-        for(T el2: temp){
-            q.ajouter(el2);
-        }
-
-        return fusionne;
-    }
 
 
 }

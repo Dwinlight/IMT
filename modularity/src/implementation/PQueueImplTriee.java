@@ -4,36 +4,41 @@ import Interface.PQueueExtend;
 import structure.Couple;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-public class PQueueImplNonTriee<T,P extends  Comparable<P>> implements PQueueExtend<T,P> {
+public class PQueueImplTriee<T,P extends  Comparable<P>> implements PQueueExtend<T,P> {
 
     List<Couple<T,P>> elements;
 
-    public PQueueImplNonTriee() {
+    public PQueueImplTriee() {
         this.elements = new ArrayList<>();
     }
 
 
     @Override
     public void ajouter(Couple<T, P> e) {
-        this.elements.add(e);
+        if(this.estVide()){
+            this.elements.add(e);
+        }
+        else{
+            int i = 0;
+            while(i<this.elements.size() && e.compareTo(this.elements.get(i)) <= 0 ){
+                i++;
+            }
+            this.elements.add(i, e);
+        }
     }
 
     @Override
     public Optional retirer() {
-        P maximum = this.elements.get(0).getPriority();
-        int indexMaximum = 0;
-        for(int z=1; z<this.elements.size(); z++){
-            if (this.elements.get(z).getPriority().compareTo(maximum)>0){
-                maximum = this.elements.get(z).getPriority();
-                indexMaximum = z;
-            }
+        if(!this.estVide()){
+            Couple<T,P> temp = this.elements.get(0);
+            this.elements.remove(0);
+            return Optional.of(temp);
         }
-        Couple<T,P> temp  = this.elements.get(indexMaximum);
-        this.elements.remove(indexMaximum);
-        return Optional.of(temp);
+        return Optional.of(null);
     }
 
     @Override
@@ -77,6 +82,8 @@ public class PQueueImplNonTriee<T,P extends  Comparable<P>> implements PQueueExt
             }
         }
         this.elements.set(j, new Couple<>(i,e));
+        this.elements.sort(Couple::compareTo);
+        Collections.reverse(this.elements);
     }
 
 

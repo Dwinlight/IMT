@@ -1,10 +1,9 @@
 package implementation;
 
-import Interface.PQueue;
 import org.junit.Test;
+import structure.Couple;
 import structure.Tuple;
 import static org.junit.Assert.*;
-import java.util.ArrayList;
 
 public class TestsImplementations {
     @Test
@@ -40,47 +39,7 @@ public class TestsImplementations {
         assertEquals(t2,r5);
         assertEquals(t1,r6);
 
-        file.ajouter(t1);
-        file.ajouter(t2);
-        file.ajouter(t3);
-        file.ajouter(t4);
-        file.ajouter(t5);
-        file.ajouter(t6);
-        PQueueImplTrieeSimple<Tuple> file2 = new PQueueImplTrieeSimple<Tuple>();
-        Tuple c1 = new Tuple(4,"ICHI");
-        Tuple c2 = new Tuple(8,"NI");
-        Tuple c3 = new Tuple(12,"SAN");
-        Tuple c4 = new Tuple(0,"YON");
-        Tuple c5 = new Tuple(7,"GO");
-        Tuple c6 = new Tuple(5,"ROKU");
-        file2.ajouter(c1);
-        file2.ajouter(c2);
-        file2.ajouter(c3);
-        file2.ajouter(c4);
-        file2.ajouter(c5);
-        file2.ajouter(c6);
-        ArrayList<Tuple> check = new ArrayList<Tuple>();
-        check.add(c1);
-        check.add(c2);
-        check.add(c3);
-        check.add(c4);
-        check.add(c5);
-        check.add(c6);
-        check.add(t1);
-        check.add(t2);
-        check.add(t3);
-        check.add(t4);
-        check.add(t5);
-        check.add(t6);
-        PQueue<Tuple> merge = file.fusion(file2);
-        assertEquals(6, file.elements.size());
-        int j = 0;
 
-        while(!merge.estVide() && check.contains(merge.retirer().get())){
-            j++;
-        }
-        assertEquals(12, j);
-        assertTrue(merge.estVide());
 
     }
     @Test
@@ -115,47 +74,118 @@ public class TestsImplementations {
         assertEquals(t2,r5);
         assertEquals(t1,r6);
 
+
+    }
+
+    @Test
+    public void testTriee(){
+        PQueueImplTriee<String,Integer> file = new PQueueImplTriee<>();
+        Couple<String,Integer> t1 = new Couple<>(1,"FIRST");
+        Couple<String,Integer> t2 = new Couple<>(2,"SECOND");
+        Couple<String,Integer> t3 = new Couple<>(3,"THIRD");
+        Couple<String,Integer> t4 = new Couple<>(6,"FOURTH");
+        Couple<String,Integer> t5 = new Couple<>(5,"FIFTH");
+        Couple<String,Integer> t6 = new Couple<>(8,"SIXTH");
+        assertTrue(file.estVide());
+
         file.ajouter(t1);
         file.ajouter(t2);
         file.ajouter(t3);
         file.ajouter(t4);
         file.ajouter(t5);
         file.ajouter(t6);
-        PQueueImplNonTrieeSimple<Tuple> file2 = new PQueueImplNonTrieeSimple<Tuple>();
-        Tuple c1 = new Tuple(4,"ICHI");
-        Tuple c2 = new Tuple(8,"NI");
-        Tuple c3 = new Tuple(12,"SAN");
-        Tuple c4 = new Tuple(0,"YON");
-        Tuple c5 = new Tuple(7,"GO");
-        Tuple c6 = new Tuple(5,"ROKU");
-        file2.ajouter(c1);
-        file2.ajouter(c2);
-        file2.ajouter(c3);
-        file2.ajouter(c4);
-        file2.ajouter(c5);
-        file2.ajouter(c6);
-        ArrayList<Tuple> check = new ArrayList<Tuple>();
-        check.add(c1);
-        check.add(c2);
-        check.add(c3);
-        check.add(c4);
-        check.add(c5);
-        check.add(c6);
-        check.add(t1);
-        check.add(t2);
-        check.add(t3);
-        check.add(t4);
-        check.add(t5);
-        check.add(t6);
-        PQueue<Tuple> merge = file.fusion(file2);
-        assertEquals(6, file.elements.size());
-        int j = 0;
+        assertFalse(file.estVide());
+        Couple<String,Integer> r1 = (Couple<String, Integer>) file.retirer().get();
+        Couple<String,Integer> r2 = (Couple<String, Integer>)file.retirer().get();
+        Couple<String,Integer> r3 = (Couple<String, Integer>)file.retirer().get();
+        Couple<String,Integer> r4 = (Couple<String, Integer>)file.retirer().get();
+        Couple<String,Integer> r5 = (Couple<String, Integer>)file.retirer().get();
+        Couple<String,Integer> r6 = (Couple<String, Integer>)file.retirer().get();
 
-        while(!merge.estVide() && check.contains(merge.retirer().get())){
-            j++;
-        }
-        assertEquals(12, j);
-        assertTrue(merge.estVide());
+        assertEquals(t6,r1);
+        assertEquals(t4,r2);
+        assertEquals(t5,r3);
+        assertEquals(t3,r4);
+        assertEquals(t2,r5);
+        assertEquals(t1,r6);
+
+
+        assertTrue(file.estVide());
+        file.ajouter(t1);
+        file.ajouter(t2);
+        file.ajouter(t3);
+        file.ajouter(t4);
+        file.ajouter(t5);
+        file.ajouter(t6);
+
+        file.remplacer("FOURTH", 0);
+        file.retirer();
+        file.retirer();
+        file.retirer();
+        file.retirer();
+        file.retirer();
+        Couple<String,Integer> r = (Couple<String, Integer>) file.retirer().get();
+        assertEquals(0, r.getPriority().compareTo(0));
+        assertEquals("FOURTH", r.getElement());
+
+
+
+
+    }
+
+    @Test
+    public void testNonTriee(){
+        PQueueImplNonTriee<String,Integer> file = new PQueueImplNonTriee<>();
+        Couple<String,Integer> t1 = new Couple<>(1,"FIRST");
+        Couple<String,Integer> t2 = new Couple<>(2,"SECOND");
+        Couple<String,Integer> t3 = new Couple<>(3,"THIRD");
+        Couple<String,Integer> t4 = new Couple<>(6,"FOURTH");
+        Couple<String,Integer> t5 = new Couple<>(5,"FIFTH");
+        Couple<String,Integer> t6 = new Couple<>(8,"SIXTH");
+        assertTrue(file.estVide());
+
+        file.ajouter(t1);
+        file.ajouter(t2);
+        file.ajouter(t3);
+        file.ajouter(t4);
+        file.ajouter(t5);
+        file.ajouter(t6);
+        assertFalse(file.estVide());
+        Couple<String,Integer> r1 = (Couple<String, Integer>) file.retirer().get();
+        Couple<String,Integer> r2 = (Couple<String, Integer>)file.retirer().get();
+        Couple<String,Integer> r3 = (Couple<String, Integer>)file.retirer().get();
+        Couple<String,Integer> r4 = (Couple<String, Integer>)file.retirer().get();
+        Couple<String,Integer> r5 = (Couple<String, Integer>)file.retirer().get();
+        Couple<String,Integer> r6 = (Couple<String, Integer>)file.retirer().get();
+
+        assertEquals(t6,r1);
+        System.out.println(t4.getPriority());
+        System.out.println(r2.getPriority());
+
+        assertEquals(t4,r2);
+        assertEquals(t5,r3);
+        assertEquals(t3,r4);
+        assertEquals(t2,r5);
+        assertEquals(t1,r6);
+
+        assertTrue(file.estVide());
+        file.ajouter(t1);
+        file.ajouter(t2);
+        file.ajouter(t3);
+        file.ajouter(t4);
+        file.ajouter(t5);
+        file.ajouter(t6);
+
+        file.remplacer("FOURTH", 0);
+        file.retirer();
+        file.retirer();
+        file.retirer();
+        file.retirer();
+        file.retirer();
+        Couple<String,Integer> r = (Couple<String, Integer>) file.retirer().get();
+        assertEquals(0, r.getPriority().compareTo(0));
+        assertEquals("FOURTH", r.getElement());
+
 
 
     }
